@@ -23,7 +23,7 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::install' do
-            it { should contain_package('serverbackup-agent').with_cdp_agent_install('true') }
+            it { should contain_package('serverbackup-agent').with_ensure('present') }
           end
         end
       end
