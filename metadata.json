@@ -1,0 +1,37 @@
+{
+  "name": "nexcess-r1soft",
+  "version": "0.1.0",
+  "author": "nexcess",
+  "summary": "Install and configure r1soft server and/or agent",
+  "license": "Apache-2.0",
+  "source": "https://github.com/nexcess/puppet-r1soft",
+  "project_page": "https://github.com/nexcess/puppet-r1soft",
+  "issues_url": "https://github.com/nexcess/puppet-r1soft/issues",
+  "tags": [
+    "backup",
+    "backups",
+    "r1soft"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
