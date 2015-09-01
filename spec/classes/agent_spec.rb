@@ -30,6 +30,10 @@ describe 'r1soft::agent' do
             it { should contain_package('kernel-devel').with_ensure('present') }
             # it { should contain_package('kernel-devel-${kernelrelease}').with_ensure('present') }
           end
+
+          describe 'r1soft::agent::kernel_module' do
+            it { should contain_exec('hcp-driver --get-module') }
+          end
         end
       end
     end
