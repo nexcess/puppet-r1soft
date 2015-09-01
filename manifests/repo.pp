@@ -1,9 +1,16 @@
-class r1soft::repo {
+class r1soft::repo (
+  $repo_install  = $r1soft::params::repo_install,
+  $repo_baseurl  = $r1soft::params::repo_baseurl,
+  $repo_ensure   = $r1soft::params::repo_ensure,
+  $repo_enabled  = $r1soft::params::repo_enabled,
+  $repo_gpgcheck = $r1soft::params::repo_gpgcheck,
+  $repo_gpgkey   = $r1soft::params::repo_gpgkey,
+) inherits r1soft::params {
   yumrepo { 'r1soft':
-    ensure   => $r1soft::agent::repo_ensure,
-    enabled  => $r1soft::agent::repo_enabled,
-    gpgcheck => $r1soft::agent::repo_gpgcheck,
-    gpgkey   => $r1soft::agent::repo_gpgkey,
-    baseurl  => $r1soft::agent::repo_baseurl,
+    ensure   => $repo_ensure,
+    enabled  => $repo_enabled,
+    gpgcheck => $repo_gpgcheck,
+    gpgkey   => $repo_gpgkey,
+    baseurl  => $repo_baseurl,
   }
 }
