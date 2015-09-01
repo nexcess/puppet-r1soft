@@ -25,6 +25,11 @@ describe 'r1soft::agent' do
           describe 'r1soft::agent::install' do
             it { should contain_package('serverbackup-agent').with_ensure('present') }
           end
+
+          describe 'r1soft::agent::kernel_package' do
+            it { should contain_package('kernel-devel').with_ensure('present') }
+            # it { should contain_package('kernel-devel-${kernelrelease}').with_ensure('present') }
+          end
         end
       end
     end
