@@ -34,6 +34,11 @@ describe 'r1soft::agent' do
           describe 'r1soft::agent::kernel_module' do
             it { should contain_exec('hcp-driver --get-module') }
           end
+
+          describe 'r1soft::agent::service' do
+            it { should contain_service('cdp-agent').with_ensure('running') }
+            it { should contain_service('cdp-agent').with_enable('true') }
+          end
         end
       end
     end

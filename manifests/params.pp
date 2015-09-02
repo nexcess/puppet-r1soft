@@ -9,4 +9,6 @@ class r1soft::params {
   $cdp_agent_version     = 'present'
   $kernel_module_install = true
   $kernel_module_name    = 'hcpdriver'
+  $service_manage        = true
+  $service_name          = 'cdp-agent'
 }
