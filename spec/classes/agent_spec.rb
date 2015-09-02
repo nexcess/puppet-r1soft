@@ -17,7 +17,6 @@ describe 'r1soft::agent' do
           describe 'r1soft::repo' do
             it { should contain_yumrepo('r1soft').with_enabled('1') }
             it { should contain_yumrepo('r1soft').with_baseurl('http://repo.r1soft.com/yum/stable/x86_64/') }
-            it { should contain_yumrepo('r1soft').with_ensure('present') }
             it { should contain_yumrepo('r1soft').with_gpgcheck('1') }
             it { should contain_yumrepo('r1soft').with_gpgkey('https://www.ksplice.com/yum/RPM-GPG-KEY-ksplice') }
           end
