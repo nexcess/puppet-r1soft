@@ -30,7 +30,7 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::kernel_module' do
-            it { should contain_exec('hcp-driver --get-module') }
+            it { should contain_exec('hcp-setup --get-module') }
           end
 
           describe 'r1soft::agent::service' do
