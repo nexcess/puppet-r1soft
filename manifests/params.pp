@@ -6,6 +6,8 @@ class r1soft::params {
   $cdp_agent_install          = true
   $cdp_agent_version          = 'present'
   $cdp_agent_package          = 'serverbackup-agent'
+  $cdp_agent_running          = 'running'
+  $cdp_agent_enabled          = true
   $kernel_devel_install       = true
   $kernel_devel_package_names = ["kernel-devel","kernel-devel-${kernelversion}"]
   $kernel_module_install      = true
