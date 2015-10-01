@@ -5,6 +5,7 @@ class r1soft::params {
   $repo_gpgcheck              = '0' # r1soft doesn't sign their packages
   $cdp_agent_install          = true
   $cdp_agent_version          = 'present'
+  $cdp_agent_package          = 'serverbackup-agent'
   $kernel_devel_install       = true
   $kernel_devel_package_names = ["kernel-devel","kernel-devel-${kernelversion}"]
   $kernel_module_install      = true
