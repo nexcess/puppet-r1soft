@@ -6,6 +6,7 @@ class r1soft::repo (
   $repo_gpgkey   = $r1soft::params::repo_gpgkey,
 ) inherits r1soft::params {
   yumrepo { 'r1soft':
+    descr    => 'r1soft',
     enabled  => $repo_enabled,
     gpgcheck => $repo_gpgcheck,
     gpgkey   => $repo_gpgkey,
