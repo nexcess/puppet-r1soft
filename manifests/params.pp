@@ -3,7 +3,6 @@ class r1soft::params {
   $repo_baseurl               = 'http://repo.r1soft.com/yum/stable/$basearch/'
   $repo_enabled               = '1'
   $repo_gpgcheck              = '0' # r1soft doesn't sign their packages
-  $cdp_agent_install          = true
   $cdp_agent_version          = 'present'
   $cdp_agent_package          = 'serverbackup-agent'
   $cdp_agent_running          = 'running'
