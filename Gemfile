@@ -10,3 +10,7 @@ gem "beaker"
 gem "beaker-rspec"
 gem "puppet-blacksmith"
 gem "metadata-json-lint"
+
+group :development, :test do
+    gem 'beaker-rspec', :require => false
+end
