@@ -8,7 +8,7 @@ class r1soft::params {
   $cdp_agent_running          = 'running'
   $cdp_agent_enabled          = true
   $kernel_devel_install       = true
-  $kernel_devel_package_names = ["kernel-devel","kernel-devel-${kernelversion}"]
+  $kernel_devel_package_names = ["kernel-devel","kernel-devel-${kernelrelease}"]
   $kernel_module_install      = true
   $kernel_module_name         = 'hcpdriver'
   $service_manage             = true
