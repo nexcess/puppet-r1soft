@@ -12,14 +12,12 @@ describe 'Applying the r1soft::agent class' do
       expect(apply_manifest(pp, :catch_failures => true).exit_code).to be_zero
     end
                   
-    describe 'Checking the results of r1soft::agent' do
-      it 'install the package serverbackup-agent' do
-        shell("rpm -q --quiet serverbackup-agent", :acceptable_exit_codes => 0)
-      end
+    describe package('serverbackup-agent') do
+      it { should be_installed }
+    end
 
-      it 'load kernel module hcpdriver' do
-        shell("lsmod | grep -q hcpdriver", :acceptable_exit_codes => 0)
-      end
+    describe kernel_module('hcpdriver') do
+      it { should be_loaded }
     end
   end
 end
