@@ -9,4 +9,4 @@ class r1soft::agent (
   class{'::r1soft::agent::config':} ->
   class{'::r1soft::agent::kernel_module':} ->
   class{'::r1soft::agent::service':}
-} 
+}
