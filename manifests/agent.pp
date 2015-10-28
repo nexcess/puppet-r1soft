@@ -20,7 +20,7 @@ inherits r1soft::params {
   validate_string($cdp_agent_package_version)
   validate_string($cdp_agent_package_name)
   validate_bool($kernel_devel_install)
-  validate_array($kernel_devel_package_names)
+  validate_string($kernel_devel_package_names)
   validate_bool($kernel_module_install)
   validate_string($kernel_module_name)
   validate_bool($service_manage)

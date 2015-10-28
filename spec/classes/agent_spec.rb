@@ -26,8 +26,7 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::kernel_package' do
-            it { should contain_package('kernel-devel').with_ensure('present') }
-            # it { should contain_package('kernel-devel-${kernelrelease}').with_ensure('present') }
+            it { should contain_package("kernel-devel-#{facts[:kernelrelease]}").with_ensure('present') }
           end
 
           describe 'r1soft::agent::kernel_module' do
@@ -64,7 +63,7 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::kernel_package allow custom packagename' do
-            let(:params) { {:kernel_devel_package_names => ['custom-kernel-devel'] } }
+            let(:params) { {:kernel_devel_package_names => 'custom-kernel-devel' } }
             it { should contain_package('custom-kernel-devel') }
           end
 
