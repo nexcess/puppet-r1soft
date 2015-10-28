@@ -46,11 +46,11 @@ describe 'r1soft::agent' do
             it { should contain_yumrepo('r1soft').with_baseurl('http://example.com/yum/') }
           end
           describe 'r1soft::repo allow custom enabled' do
-            let(:params) { {:repo_enabled => '0' } }
+            let(:params) { {:repo_enabled => false } }
             it { should contain_yumrepo('r1soft').with_enabled('0') }
           end
           describe 'r1soft::repo allow custom gpgcheck' do
-            let(:params) { {:repo_gpgcheck => '1' } }
+            let(:params) { {:repo_gpgcheck => true } }
             it { should contain_yumrepo('r1soft').with_gpgcheck('1') }
           end
 
@@ -64,7 +64,7 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::kernel_package allow custom packagename' do
-            let(:params) { {:kernel_devel_package_names => 'custom-kernel-devel' } }
+            let(:params) { {:kernel_devel_package_names => ['custom-kernel-devel'] } }
             it { should contain_package('custom-kernel-devel') }
           end
 
