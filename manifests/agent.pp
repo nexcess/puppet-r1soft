@@ -31,7 +31,6 @@ inherits r1soft::params {
   class{'::r1soft::repo':} ->
   class{'::r1soft::agent::kernel_package':} ->
   class{'::r1soft::agent::install':} ->
-  class{'::r1soft::agent::config':} ->
   class{'::r1soft::agent::kernel_module':} ->
   class{'::r1soft::agent::service':}
 }
