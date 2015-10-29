@@ -80,6 +80,19 @@ describe 'r1soft::agent' do
             it { should contain_service('cdp-agent').with_enable(false) }
           end
 
+          describe 'r1soft::agent with kernel_devel_install = false' do
+            let(:params) { {:kernel_devel_install => false } }
+            it { should_not contain_package("kernel-devel-#{facts[:kernelrelease]}").with_ensure('present') }
+          end
+          describe 'r1soft::agent with kernel_module_install = false' do
+            let(:params) { {:kernel_module_install => false } }
+            it { should_not contain_exec('hcp-setup --get-module') }
+          end
+          describe 'r1soft::agent with service_manage = false' do
+            let(:params) { {:service_manage => false } }
+            it { should_not contain_service('cdp-agent') }
+          end
+
         end
       end
     end
