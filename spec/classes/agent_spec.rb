@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe 'r1soft::agent' do
   context 'supported operating systems' do
     on_supported_os.each do |os, facts|
@@ -80,6 +81,10 @@ describe 'r1soft::agent' do
             it { should contain_service('cdp-agent').with_enable(false) }
           end
 
+          describe 'r1soft::agent with repo_install = false' do
+            let(:params) { {:repo_install => false } }
+            it { should_not contain_yumrepo('r1soft') }
+          end
           describe 'r1soft::agent with kernel_devel_install = false' do
             let(:params) { {:kernel_devel_install => false } }
             it { should_not contain_package("kernel-devel-#{facts[:kernelrelease]}").with_ensure('present') }

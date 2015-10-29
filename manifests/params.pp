@@ -1,4 +1,5 @@
 class r1soft::params {
+  $repo_install               = true
   $repo_baseurl               = 'http://repo.r1soft.com/yum/stable/$basearch/'
   $repo_enabled               = true
 

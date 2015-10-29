@@ -1,4 +1,5 @@
 class r1soft::agent (
+  $repo_install               = $r1soft::params::repo_install,
   $repo_baseurl               = $r1soft::params::repo_baseurl,
   $repo_enabled               = $r1soft::params::repo_enabled,
   $repo_gpgcheck              = $r1soft::params::repo_gpgcheck,
@@ -15,6 +16,7 @@ class r1soft::agent (
   $keys                       = $r1soft::params::keys,
 )
 inherits r1soft::params {
+  validate_bool($repo_install)
   validate_string($repo_baseurl)
   validate_bool($repo_enabled)
   validate_bool($repo_gpgcheck)
