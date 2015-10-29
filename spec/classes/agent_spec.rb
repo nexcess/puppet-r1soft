@@ -31,7 +31,7 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::kernel_module' do
-            it { should contain_exec('hcp-setup --get-module') }
+            it { should contain_exec('get and load r1soft kernel module') }
           end
 
           describe 'r1soft::agent::service' do
@@ -91,7 +91,7 @@ describe 'r1soft::agent' do
           end
           describe 'r1soft::agent with kernel_module_install = false' do
             let(:params) { {:kernel_module_install => false } }
-            it { should_not contain_exec('hcp-setup --get-module') }
+            it { should_not contain_exec('get and load r1soft kernel module') }
           end
           describe 'r1soft::agent with service_manage = false' do
             let(:params) { {:service_manage => false } }
