@@ -14,4 +14,5 @@ class r1soft::params {
   $service_name               = 'cdp-agent'
   $service_ensure             = 'running'
   $service_enable             = true
+  $keys                       = {}
 }
