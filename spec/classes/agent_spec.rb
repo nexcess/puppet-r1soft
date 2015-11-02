@@ -13,6 +13,7 @@ describe 'r1soft::agent' do
           it { should contain_class('r1soft::agent::kernel_package') }
           it { should contain_class('r1soft::agent::install') }
           it { should contain_class('r1soft::agent::service') }
+          it { should contain_class('r1soft::agent::keys') }
 
           describe 'r1soft::repo' do
             it { should contain_yumrepo('r1soft').with_enabled('1') }
@@ -33,6 +34,11 @@ describe 'r1soft::agent' do
             it { should contain_service('cdp-agent').with_ensure('running') }
             it { should contain_service('cdp-agent').with_enable('true') }
           end
+
+          describe 'r1soft::agent::keys' do
+            it { should_not contain_file('/usr/sbin/r1soft/conf/server.allow/') }
+          end
+
         end
         context 'custom parameters' do
 
@@ -87,6 +93,10 @@ describe 'r1soft::agent' do
           describe 'r1soft::agent with service_manage = false' do
             let(:params) { {:service_manage => false } }
             it { should_not contain_service('cdp-agent') }
+          end
+          describe 'r1soft::agent with keys_purge_unmanaged = true' do
+            let(:params) { {:keys_purge_unmanaged => true } }
+            it { should contain_file('/usr/sbin/r1soft/conf/server.allow/').with_purge(true) }
           end
 
         end

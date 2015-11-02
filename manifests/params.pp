@@ -31,4 +31,5 @@ class r1soft::params {
   $service_ensure             = 'running'
   $service_enable             = true
   $keys                       = {}
+  $keys_purge_unmanaged       = false
 }

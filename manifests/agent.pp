@@ -12,6 +12,7 @@ class r1soft::agent (
   $service_ensure             = $r1soft::params::service_ensure,
   $service_enable             = $r1soft::params::service_enable,
   $keys                       = $r1soft::params::keys,
+  $keys_purge_unmanaged       = $r1soft::params::keys_purge_unmanaged,
 )
 inherits r1soft::params {
   validate_bool($repo_install)
@@ -27,6 +28,7 @@ inherits r1soft::params {
   validate_string($service_ensure)
   validate_bool($service_enable)
   validate_hash($keys)
+  validate_bool($keys_purge_unmanaged)
 
   anchor {'r1soft::agent::begin':} ->
   class{'::r1soft::repo':} ->

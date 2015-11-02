@@ -53,4 +53,39 @@ describe 'Applying the r1soft::agent class' do
       it { should_not exist }
     end
   end
+
+  describe 'running r1soft::agent with one key ensure present and keys_purge_unmanaged true' do
+
+    # create file outside of the normal manifest so we can make sure it gets
+    # purged later
+    it 'should work with no errors' do
+      unmanaged_file = <<-EOS
+           exec{'/bin/mkdir -p /usr/sbin/r1soft/conf/server.allow/':}
+           file{'/usr/sbin/r1soft/conf/server.allow/198.51.100.3':
+             ensure => 'present',
+             content => 'bar',
+           }
+      EOS
+      apply_manifest(unmanaged_file, :catch_failures => true)
+
+      pp = <<-EOS
+         class {'::r1soft::agent':
+           keys => {'198.51.100.2' => {ensure => 'present', key => 'foo',}},
+           keys_purge_unmanaged => true,
+         }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(pp, :catch_failures => true)
+      expect(apply_manifest(pp, :catch_failures => true).exit_code).to be_zero
+    end
+
+    describe file('/usr/sbin/r1soft/conf/server.allow/198.51.100.2') do
+      its(:content) { should match /foo/ }
+    end
+    describe file('/usr/sbin/r1soft/conf/server.allow/198.51.100.3') do
+      it { should_not exist }
+    end
+  end
+
 end
