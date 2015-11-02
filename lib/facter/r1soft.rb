@@ -10,7 +10,7 @@ if File::exist?('/usr/sbin/r1soft/bin/cdp') then
 
   Facter.add(:r1soft_agent_version) do
     setcode do
-      r1soft_version_output.split[4..6].join(' ')
+      r1soft_version_output.split.values_at(4,6).join('-')
     end
   end
 
