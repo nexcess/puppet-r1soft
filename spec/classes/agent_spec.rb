@@ -12,7 +12,6 @@ describe 'r1soft::agent' do
           it { should contain_class('r1soft::repo') }
           it { should contain_class('r1soft::agent::kernel_package') }
           it { should contain_class('r1soft::agent::install') }
-          it { should contain_class('r1soft::agent::kernel_module') }
           it { should contain_class('r1soft::agent::service') }
 
           describe 'r1soft::repo' do
@@ -28,10 +27,6 @@ describe 'r1soft::agent' do
 
           describe 'r1soft::agent::kernel_package' do
             it { should contain_package("kernel-devel-#{facts[:kernelrelease]}").with_ensure('present') }
-          end
-
-          describe 'r1soft::agent::kernel_module' do
-            it { should contain_exec('get and load r1soft kernel module') }
           end
 
           describe 'r1soft::agent::service' do
@@ -88,10 +83,6 @@ describe 'r1soft::agent' do
           describe 'r1soft::agent with kernel_devel_install = false' do
             let(:params) { {:kernel_devel_install => false } }
             it { should_not contain_package("kernel-devel-#{facts[:kernelrelease]}").with_ensure('present') }
-          end
-          describe 'r1soft::agent with kernel_module_install = false' do
-            let(:params) { {:kernel_module_install => false } }
-            it { should_not contain_exec('get and load r1soft kernel module') }
           end
           describe 'r1soft::agent with service_manage = false' do
             let(:params) { {:service_manage => false } }

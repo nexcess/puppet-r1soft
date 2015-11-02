@@ -26,8 +26,6 @@ class r1soft::params {
   } else {
     $kernel_devel_package_names = "kernel-devel-${::kernelrelease}"
   }
-  $kernel_module_install      = true
-  $kernel_module_name         = 'hcpdriver'
   $service_manage             = true
   $service_name               = 'cdp-agent'
   $service_ensure             = 'running'

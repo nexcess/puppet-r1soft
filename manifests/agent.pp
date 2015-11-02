@@ -7,8 +7,6 @@ class r1soft::agent (
   $cdp_agent_package_name     = $r1soft::params::cdp_agent_package_name,
   $kernel_devel_install       = $r1soft::params::kernel_devel_install,
   $kernel_devel_package_names = $r1soft::params::kernel_devel_package_names,
-  $kernel_module_install      = $r1soft::params::kernel_module_install,
-  $kernel_module_name         = $r1soft::params::kernel_module_name,
   $service_manage             = $r1soft::params::service_manage,
   $service_name               = $r1soft::params::service_name,
   $service_ensure             = $r1soft::params::service_ensure,
@@ -24,8 +22,6 @@ inherits r1soft::params {
   validate_string($cdp_agent_package_name)
   validate_bool($kernel_devel_install)
   validate_string($kernel_devel_package_names)
-  validate_bool($kernel_module_install)
-  validate_string($kernel_module_name)
   validate_bool($service_manage)
   validate_string($service_name)
   validate_string($service_ensure)
@@ -36,7 +32,6 @@ inherits r1soft::params {
   class{'::r1soft::repo':} ->
   class{'::r1soft::agent::kernel_package':} ->
   class{'::r1soft::agent::install':} ->
-  class{'::r1soft::agent::kernel_module':} ->
   class{'::r1soft::agent::service':} ->
   class{'::r1soft::agent::keys':} ->
   anchor {'r1soft::agent::end':}
