@@ -23,6 +23,7 @@ yum repository, the kernel-devel pacakge, the cdp kernel module, install keys
 for r1soft backup servers, and start the r1soft agent.
 
 ## Usage
+
 ### Beginning with r1soft::agent
 
 To install the r1soft agent with keys for 198.51.100.2 and 198.51.100.3, and
@@ -39,7 +40,7 @@ class {'::r1soft::agent':
 It looks much better and is much easier to manage in hiera:
 
 ```
-# in hiera
+# in hiera.yaml
 r1soft::agent::keys:
   198.51.100.2:
     key: |
@@ -59,20 +60,101 @@ r1soft::agent::keys:
     ensure: absent
 
 
-# in your manifest
+# in your manifest.pp
 class {'::r1soft::agent':}
 ```
 
-
 ## Reference
 
+### Classes
+
+* r1soft::repo: Installs the repository for r1soft
+* r1soft::agent::kernel_package: Installs the kernel-devel package
+* r1soft::agent::install: Installs the r1soft package
+* r1soft::agent::service: Configures and starts the r1soft service
+* r1soft::agent::keys: Manages keys for r1soft
+
+### Parameters
+
+#### `repo_install`
+Specify if you want the module to install the r1soft repository. Default value: true
+
+#### `repo_baseurl`
+Specify the baseurl for the yum repo. Default value: 'http://repo.r1soft.com/yum/stable/$basearch/'
+
+#### `repo_enabled`
+Specify the enable value for the yum and apt repo. Default value: true
+
+#### `repo_gpgcheck`
+Specify the gpgcheck value for the yum repo. Default value: false (because r1soft does not sign their RPMS)
+
+#### `cdp_agent_package_version`
+Specify the version of r1soft to install. Default value: 'present'
+
+#### `cdp_agent_package_name`
+Specify the name of the r1soft package. Default value: 'serverbackup-agent'
+
+#### `kernel_devel_install`
+Specify if you want the module to install the kernel-devel package which is needed by r1soft. Default value: true
+
+#### `kernel_devel_package_names`
+Specify the kernel-devel package name. Default value: kernel-devel-${::kernelrelease}
+
+#### `service_manage`
+Specify if you want to the module to manage the r1soft service. Default value: true
+
+#### `service_name`
+Specify the name of the r1soft service. Default value: 'cdp-agent'
+
+#### `service_ensure`
+Specify the ensure value of the r1soft service. Default value: 'running'
+
+#### `service_enable`
+Specify the enable value of the r1soft service. Default value: true
+
+#### `keys`
+Specify a list of keys to place on the r1soft agent server. Default value: empty
+
+#### `keys_purge_unmanaged`
+Specify if you want to purge all keys not managed by puppet: Default value: false
+
+### Facts
+
+* r1soft_agent_version: r1soft version and build number
+* r1soft_agent_version_short: r1soft version number
+* r1soft_agent_version_long: r1soft version number, build number, and build date
+
 ## Limitations
+
+The module works with currently supported versions of CentOS and RHEL, It has
+been tested on CentOS. It can probably work on Oracle Linux and Scientific Linux
+with minimal work.
 
 ## Development
 
 Install necessary gems:
 ```
 bundle install --path vendor/bundle
+```
+
+Check syntax of all puppet manifests, erb templates, and ruby files:
+```
+bundle exec rake validate
+```
+
+Run puppetlint on all puppet files:
+```
+bundle exec rake lint
+```
+
+Run spec tests in a clean fixtures directory
+```
+bundle exec rake spec
+```
+
+Run acceptance tests:
+```
+BEAKER_setfile=spec/acceptance/nodesets/centos-67-x64.yml bundle exec rake acceptance
 ```
 
 ## Copyright
