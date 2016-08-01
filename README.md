@@ -81,7 +81,7 @@ class {'::r1soft::agent':}
 Specify if you want the module to install the r1soft repository. Default value: true
 
 #### `repo_baseurl`
-Specify the baseurl for the yum repo. Default value: 'http://repo.r1soft.com/yum/stable/$basearch/'
+Specify the baseurl for the yum repo. Default value: 'https://repo.r1soft.com/yum/stable/$basearch/'
 
 #### `repo_enabled`
 Specify the enable value for the yum and apt repo. Default value: true

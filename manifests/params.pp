@@ -1,6 +1,6 @@
 class r1soft::params {
   $repo_install               = true
-  $repo_baseurl               = 'http://repo.r1soft.com/yum/stable/$basearch/'
+  $repo_baseurl               = 'https://repo.r1soft.com/yum/stable/$basearch/'
   $repo_enabled               = true
 
   # r1soft doesn't sign their packages
@@ -18,7 +18,7 @@ class r1soft::params {
   # made a PAE capable processor a requirement for RHEL 6. See
   # https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/6.0_Release_Notes/kernel.html#idp1066960
   #
-  if ($::operatingsystem in ['CentOS', 'RedHat'] and $::operatingsystemmajorrelease == 5) {
+  if ($::operatingsystem in ['CentOS', 'RedHat'] and $::operatingsystemmajrelease == 5) {
     $kernel_devel_package_names = $::kernelrelease ? {
       /(PAE|xen)$/ => regsubst ($::kernelrelease, '(.*)(PAE|xen)', 'kernel-\2-devel-\1'),
       default      => "kernel-devel-${::kernelrelease}",
