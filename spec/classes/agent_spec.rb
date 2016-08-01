@@ -17,7 +17,7 @@ describe 'r1soft::agent' do
 
           describe 'r1soft::repo' do
             it { should contain_yumrepo('r1soft').with_enabled('1') }
-            it { should contain_yumrepo('r1soft').with_baseurl('http://repo.r1soft.com/yum/stable/$basearch/') }
+            it { should contain_yumrepo('r1soft').with_baseurl('https://repo.r1soft.com/yum/stable/$basearch/') }
             it { should contain_yumrepo('r1soft').with_gpgcheck('0') }
             it { should contain_yumrepo('r1soft').with_descr('r1soft') }
           end
