@@ -81,7 +81,15 @@ class {'::r1soft::agent':}
 Specify if you want the module to install the r1soft repository. Default value: true
 
 #### `repo_baseurl`
-Specify the baseurl for the yum repo. Default value: 'https://repo.r1soft.com/yum/stable/$basearch/'
+Specify the baseurl for the yum repo. Default value: 'http://repo.r1soft.com/yum/stable/$basearch/'
+
+http is used instead of https because r1soft doesn't include the full chain for
+their certificate. CentOS has the root certificate but not the intermediate
+certificate. It is
+[web server's responsibility to send intermediate certificates](https://wiki.mozilla.org/CA:FAQ#Why_does_SSL_handshake_fail_due_to_missing_intermediate_certificate.3F). Without
+the intermediate certificate, the TLS connection and yum fail. See
+[ssllabs's test](https://www.ssllabs.com/ssltest/analyze.html?d=repo.r1soft.com
+for more info.
 
 #### `repo_enabled`
 Specify the enable value for the yum and apt repo. Default value: true
