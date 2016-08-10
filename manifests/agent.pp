@@ -11,6 +11,7 @@ class r1soft::agent (
   $service_name               = $r1soft::params::service_name,
   $service_ensure             = $r1soft::params::service_ensure,
   $service_enable             = $r1soft::params::service_enable,
+  $service_provider           = $r1soft::params::service_provider,
   $keys                       = $r1soft::params::keys,
   $keys_purge_unmanaged       = $r1soft::params::keys_purge_unmanaged,
 )
@@ -27,6 +28,7 @@ inherits r1soft::params {
   validate_string($service_name)
   validate_string($service_ensure)
   validate_bool($service_enable)
+  validate_string($service_provider)
   validate_hash($keys)
   validate_bool($keys_purge_unmanaged)
 
