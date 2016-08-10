@@ -121,6 +121,9 @@ Specify the ensure value of the r1soft service. Default value: 'running'
 #### `service_enable`
 Specify the enable value of the r1soft service. Default value: true
 
+#### `service_provider`
+Specify the provider for the r1soft service. Default value: 'init'
+
 #### `keys`
 Specify a list of keys to place on the r1soft agent server. Default value: empty
 
