@@ -6,3 +6,4 @@ HOSTS:
     hypervisor: vagrant
 CONFIG:
   type: foss
+  masterless: true
