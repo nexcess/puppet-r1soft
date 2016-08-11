@@ -24,7 +24,7 @@ inherits r1soft::params {
 
   if $repo_install {
     include r1soft::repo
-    Class['r1soft::repo'] -> Package <| title == "$cdp_server_package_name" |>
+    Yumrepo['r1soft'] -> Package <| title == $cdp_server_package_name |>
   }
 
 

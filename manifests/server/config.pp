@@ -1,7 +1,7 @@
 class r1soft::server::config {
   $hash = sha1($r1soft::server::admin_pass)
 
-  file {"/usr/sbin/r1soft/conf/.puppet":
+  file {'/usr/sbin/r1soft/conf/.puppet':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
