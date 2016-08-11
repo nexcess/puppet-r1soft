@@ -1,8 +1,5 @@
 class r1soft::server (
   $repo_install               = $r1soft::params::repo_install,
-  $repo_baseurl               = $r1soft::params::repo_baseurl,
-  $repo_enabled               = $r1soft::params::repo_enabled,
-  $repo_gpgcheck              = $r1soft::params::repo_gpgcheck,
   $cdp_server_package_version = $r1soft::params::cdp_server_package_version,
   $cdp_server_package_name    = $r1soft::params::cdp_server_package_name,
 
@@ -13,9 +10,6 @@ class r1soft::server (
 )
 inherits r1soft::params {
   validate_bool($repo_install)
-  validate_string($repo_baseurl)
-  validate_bool($repo_enabled)
-  validate_bool($repo_gpgcheck)
   validate_string($cdp_server_package_version)
   validate_string($cdp_server_package_name)
 
@@ -23,6 +17,11 @@ inherits r1soft::params {
   validate_string($service_name)
   validate_string($service_ensure)
   validate_bool($service_enable)
+
+  if $repo_install {
+    include r1soft::repo
+    Class['r1soft::repo'] -> Package <| title == "$cdp_server_package_name" |>
+  }
 
 
   anchor {'r1soft::server::begin':} ->

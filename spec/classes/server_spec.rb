@@ -10,6 +10,7 @@ describe 'r1soft::server' do
 
         context 'with defaults for all parameters' do
           it { should contain_class('r1soft::server') }
+          it { should contain_class('r1soft::repo') }
           it { should contain_class('r1soft::server::install') }
           it { should contain_class('r1soft::server::service') }
 
