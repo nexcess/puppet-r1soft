@@ -9,7 +9,7 @@ describe 'r1soft::server' do
         end
 
         context 'with defaults for all parameters' do
-          it { is_expected.to raise_error(Puppet::ParseError, /false is not a string/) }
+          it { is_expected.to raise_error(/false is not a string/) }
         end
 
         context 'with defaults for all parameters except admin_pass' do
