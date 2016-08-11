@@ -9,9 +9,15 @@ describe 'r1soft::server' do
         end
 
         context 'with defaults for all parameters' do
+          it { is_expected.to raise_error(Puppet::ParseError, /false is not a string/) }
+        end
+
+        context 'with defaults for all parameters except admin_pass' do
+          let(:params) { {:admin_pass => 'secure_password' } }
           it { should contain_class('r1soft::server') }
           it { should contain_class('r1soft::repo') }
           it { should contain_class('r1soft::server::install') }
+          it { should contain_class('r1soft::server::config') }
           it { should contain_class('r1soft::server::service') }
 
           describe 'r1soft::service::install' do
@@ -25,24 +31,24 @@ describe 'r1soft::server' do
         end
         context 'custom parameters' do
           describe 'r1soft::server::install allow custom ensure/version' do
-            let(:params) { {:cdp_server_package_version => '1.0.0' } }
+            let(:params) { {:admin_pass => 'secure_password',
+                            :cdp_server_package_version => '1.0.0'} }
             it { should contain_package('serverbackup-enterprise').with_ensure('1.0.0') }
           end
           describe 'r1soft::server::install allow custom name' do
-            let(:params) { {:cdp_server_package_name => 'r1soft-server' } }
+            let(:params) { {:admin_pass => 'secure_password',
+                            :cdp_server_package_name => 'r1soft-server' } }
             it { should contain_package('r1soft-server') }
           end
           describe 'r1soft::server::service with custom service name' do
-            let(:params) { {:service_name => 'backup-server' } }
+            let(:params) { {:admin_pass => 'secure_password',
+                            :service_name => 'backup-server'} }
             it { should contain_service('backup-server') }
           end
           describe 'r1soft::server::service with custom ensure' do
-            let(:params) { {:service_ensure => 'stopped' } }
+            let(:params) { {:admin_pass => 'secure_password',
+                            :service_ensure => 'stopped'} }
             it { should contain_service('cdp-server').with_ensure('stopped') }
-          end
-          describe 'r1soft::server::service with custom ensure' do
-            let(:params) { {:service_enable => false } }
-            it { should contain_service('cdp-server').with_enable(false) }
           end
         end
       end

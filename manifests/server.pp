@@ -7,6 +7,8 @@ class r1soft::server (
   $service_name        = $r1soft::params::server_service_name,
   $service_ensure      = $r1soft::params::server_service_ensure,
   $service_enable      = $r1soft::params::server_service_enable,
+  $admin_user          = $r1soft::params::server_admin_user,
+  $admin_pass          = $r1soft::params::server_admin_pass,
 )
 inherits r1soft::params {
   validate_bool($repo_install)
@@ -17,6 +19,8 @@ inherits r1soft::params {
   validate_string($service_name)
   validate_string($service_ensure)
   validate_bool($service_enable)
+  validate_string($admin_user)
+  validate_string($admin_pass)
 
   if $repo_install {
     include r1soft::repo
@@ -26,6 +30,7 @@ inherits r1soft::params {
 
   anchor {'r1soft::server::begin':} ->
   class{'::r1soft::server::install':} ->
+  class{'::r1soft::server::config':} ->
   class{'::r1soft::server::service':} ->
   anchor {'r1soft::server::end':}
 }

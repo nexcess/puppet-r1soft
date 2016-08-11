@@ -40,4 +40,6 @@ class r1soft::params {
   $server_service_name        = 'cdp-server'
   $server_service_ensure      = 'running'
   $server_service_enable      = true
+  $server_admin_user          = 'admin'
+  $server_admin_pass          = false
 }
