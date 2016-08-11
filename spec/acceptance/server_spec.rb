@@ -12,7 +12,7 @@ describe 'Applying the r1soft::server class' do
       expect(apply_manifest(pp, :catch_failures => true).exit_code).to be_zero
     end
 
-    describe package('serverbackup-manager') do
+    describe package('serverbackup-enterprise') do
       it { should be_installed }
     end
   end

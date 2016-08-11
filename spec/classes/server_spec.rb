@@ -15,7 +15,7 @@ describe 'r1soft::server' do
           it { should contain_class('r1soft::server::service') }
 
           describe 'r1soft::service::install' do
-            it { should contain_package('serverbackup-manager').with_ensure('present') }
+            it { should contain_package('serverbackup-enterprise').with_ensure('present') }
           end
 
           describe 'r1soft::service::service' do
@@ -26,7 +26,7 @@ describe 'r1soft::server' do
         context 'custom parameters' do
           describe 'r1soft::server::install allow custom ensure/version' do
             let(:params) { {:cdp_server_package_version => '1.0.0' } }
-            it { should contain_package('serverbackup-manager').with_ensure('1.0.0') }
+            it { should contain_package('serverbackup-enterprise').with_ensure('1.0.0') }
           end
           describe 'r1soft::server::install allow custom name' do
             let(:params) { {:cdp_server_package_name => 'r1soft-server' } }
