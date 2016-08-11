@@ -30,7 +30,7 @@ class r1soft::params {
   $agent_service_name         = 'cdp-agent'
   $agent_service_ensure       = 'running'
   $agent_service_enable       = true
-  $agent_service_provider     = 'init'
+  $agent_service_provider     = 'redhat'
   $keys                       = {}
   $keys_purge_unmanaged       = false
 }
