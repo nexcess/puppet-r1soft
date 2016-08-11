@@ -32,6 +32,8 @@ describe 'r1soft::server' do
           describe 'r1soft::service::config' do
             it { should contain_file('/usr/sbin/r1soft/conf/.puppet_admin_pass').with_ensure('present') }
             it { should_not contain_file('/usr/sbin/r1soft/conf/.puppet_max_mem').with_ensure('present') }
+            it { should contain_exec('setting http_port 80') }
+            it { should contain_exec('setting https_port 443') }
           end
         end
         context 'custom parameters' do
@@ -61,6 +63,13 @@ describe 'r1soft::server' do
             it { should contain_file('/usr/sbin/r1soft/conf/.puppet_max_mem').with_ensure('present') }         
           end
 
+          describe 'r1soft::server::config with custom http and https ports' do
+            let(:params) { {:admin_pass => 'secure_password',
+                            :http_port  => '8080',
+                            :https_port => '8443'} }
+            it { should contain_exec('setting http_port 8080') }
+            it { should contain_exec('setting https_port 8443') }
+          end
         end
       end
     end

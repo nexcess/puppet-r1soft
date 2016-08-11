@@ -43,4 +43,6 @@ class r1soft::params {
   $server_admin_user          = 'admin'
   $server_admin_pass          = false
   $server_max_mem             = undef
+  $server_http_port           = 80
+  $server_https_port          = 443
 }

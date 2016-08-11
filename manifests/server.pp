@@ -10,6 +10,8 @@ class r1soft::server (
   $admin_user          = $r1soft::params::server_admin_user,
   $admin_pass          = $r1soft::params::server_admin_pass,
   $max_mem             = $r1soft::params::server_max_mem,
+  $http_port           = $r1soft::params::server_http_port,
+  $https_port          = $r1soft::params::server_https_port,
 )
 inherits r1soft::params {
   validate_bool($repo_install)
@@ -23,6 +25,8 @@ inherits r1soft::params {
   validate_string($admin_user)
   validate_string($admin_pass)
   validate_string($max_mem)
+  validate_integer($http_port)
+  validate_integer($https_port)
 
   if $repo_install {
     include r1soft::repo
