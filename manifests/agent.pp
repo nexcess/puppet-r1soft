@@ -1,8 +1,5 @@
 class r1soft::agent (
   $repo_install               = $r1soft::params::repo_install,
-  $repo_baseurl               = $r1soft::params::repo_baseurl,
-  $repo_enabled               = $r1soft::params::repo_enabled,
-  $repo_gpgcheck              = $r1soft::params::repo_gpgcheck,
   $cdp_agent_package_version  = $r1soft::params::cdp_agent_package_version,
   $cdp_agent_package_name     = $r1soft::params::cdp_agent_package_name,
   $kernel_devel_install       = $r1soft::params::kernel_devel_install,
@@ -17,9 +14,6 @@ class r1soft::agent (
 )
 inherits r1soft::params {
   validate_bool($repo_install)
-  validate_string($repo_baseurl)
-  validate_bool($repo_enabled)
-  validate_bool($repo_gpgcheck)
   validate_string($cdp_agent_package_version)
   validate_string($cdp_agent_package_name)
   validate_bool($kernel_devel_install)
@@ -32,8 +26,12 @@ inherits r1soft::params {
   validate_hash($keys)
   validate_bool($keys_purge_unmanaged)
 
+  if $repo_install {
+    include r1soft::repo
+    Class['r1soft::repo'] -> Package <| title == "$cdp_agent_package_name" |>
+  }
+
   anchor {'r1soft::agent::begin':} ->
-  class{'::r1soft::repo':} ->
   class{'::r1soft::agent::kernel_package':} ->
   class{'::r1soft::agent::install':} ->
   class{'::r1soft::agent::service':} ->
