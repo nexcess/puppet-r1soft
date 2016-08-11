@@ -1,17 +1,17 @@
 class r1soft::repo (
-  $repo_baseurl               = $r1soft::params::repo_baseurl,
-  $repo_enabled               = $r1soft::params::repo_enabled,
-  $repo_gpgcheck              = $r1soft::params::repo_gpgcheck,
+  $baseurl  = $r1soft::params::repo_baseurl,
+  $enabled  = $r1soft::params::repo_enabled,
+  $gpgcheck = $r1soft::params::repo_gpgcheck,
 )
 inherits r1soft::params {
-  validate_string($repo_baseurl)
-  validate_bool($repo_enabled)
-  validate_bool($repo_gpgcheck)
+  validate_string($baseurl)
+  validate_bool($enabled)
+  validate_bool($gpgcheck)
 
   yumrepo { 'r1soft':
     descr    => 'r1soft',
-    enabled  => bool2num($repo_enabled),
-    gpgcheck => bool2num($repo_gpgcheck),
-    baseurl  => $repo_baseurl,
+    enabled  => bool2num($enabled),
+    gpgcheck => bool2num($gpgcheck),
+    baseurl  => $baseurl,
   }
 }

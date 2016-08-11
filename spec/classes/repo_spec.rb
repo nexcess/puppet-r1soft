@@ -18,15 +18,15 @@ describe 'r1soft::repo' do
         end
         context 'custom parameters' do
           describe 'r1soft::repo allow custom basurl' do
-            let(:params) { {:repo_baseurl => 'http://example.com/yum/' } }
+            let(:params) { {:baseurl => 'http://example.com/yum/' } }
             it { should contain_yumrepo('r1soft').with_baseurl('http://example.com/yum/') }
           end
           describe 'r1soft::repo allow custom enabled' do
-            let(:params) { {:repo_enabled => false } }
+            let(:params) { {:enabled => false } }
             it { should contain_yumrepo('r1soft').with_enabled('0') }
           end
           describe 'r1soft::repo allow custom gpgcheck' do
-            let(:params) { {:repo_gpgcheck => true } }
+            let(:params) { {:gpgcheck => true } }
             it { should contain_yumrepo('r1soft').with_gpgcheck('1') }
           end
         end
