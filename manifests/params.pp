@@ -26,11 +26,11 @@ class r1soft::params {
   } else {
     $kernel_devel_package_names = "kernel-devel-${::kernelrelease}"
   }
-  $service_manage             = true
-  $service_name               = 'cdp-agent'
-  $service_ensure             = 'running'
-  $service_enable             = true
-  $service_provider           = 'init'
+  $agent_service_manage       = true
+  $agent_service_name         = 'cdp-agent'
+  $agent_service_ensure       = 'running'
+  $agent_service_enable       = true
+  $agent_service_provider     = 'redhat'
   $keys                       = {}
   $keys_purge_unmanaged       = false
 }
