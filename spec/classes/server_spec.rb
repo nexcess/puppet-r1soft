@@ -28,6 +28,11 @@ describe 'r1soft::server' do
             it { should contain_service('cdp-server').with_ensure('running') }
             it { should contain_service('cdp-server').with_enable('true') }
           end
+
+          describe 'r1soft::service::config' do
+            it { should contain_file('/usr/sbin/r1soft/conf/.puppet_admin_pass').with_ensure('present') }
+            it { should_not contain_file('/usr/sbin/r1soft/conf/.puppet_max_mem').with_ensure('present') }
+          end
         end
         context 'custom parameters' do
           describe 'r1soft::server::install allow custom ensure/version' do
@@ -50,6 +55,12 @@ describe 'r1soft::server' do
                             :service_ensure => 'stopped'} }
             it { should contain_service('cdp-server').with_ensure('stopped') }
           end
+          describe 'r1soft::server::config with custom max_mem' do
+            let(:params) { {:admin_pass => 'secure_password',
+                            :max_mem => '4g'} }
+            it { should contain_file('/usr/sbin/r1soft/conf/.puppet_max_mem').with_ensure('present') }         
+          end
+
         end
       end
     end

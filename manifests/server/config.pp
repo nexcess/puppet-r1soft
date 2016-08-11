@@ -1,7 +1,8 @@
 class r1soft::server::config {
+
   $hash = sha1($r1soft::server::admin_pass)
 
-  file {'/usr/sbin/r1soft/conf/.puppet':
+  file {'/usr/sbin/r1soft/conf/.puppet_admin_pass':
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
@@ -10,8 +11,24 @@ class r1soft::server::config {
   }
   exec{'setting admin user password':
     command     => "/usr/bin/serverbackup-setup --user ${r1soft::server::admin_user} --pass ${r1soft::server::admin_pass}",
-    subscribe   => File['/usr/sbin/r1soft/conf/.puppet'],
+    subscribe   => File['/usr/sbin/r1soft/conf/.puppet_admin_pass'],
     notify      => Class['r1soft::server::service'],
     refreshonly => true,
   }
+
+  if $r1soft::server::max_mem {
+    file {'/usr/sbin/r1soft/conf/.puppet_max_mem':
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0600',
+      content => "# This file is used by the r1soft puppet module\n${r1soft::server::max_mem}",
+    }
+    exec{"setting max-mem ${r1soft::server::max_mem}":
+      command     => "/usr/bin/serverbackup-setup --set-max-mem ${r1soft::server::max_mem}",
+      subscribe   => File['/usr/sbin/r1soft/conf/.puppet_max_mem'],
+      refreshonly => true,
+    }
+  }
 }
+
