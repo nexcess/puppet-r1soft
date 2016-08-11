@@ -39,12 +39,12 @@ describe 'r1soft::server' do
         context 'custom parameters' do
           describe 'r1soft::server::install allow custom ensure/version' do
             let(:params) { {:admin_pass => 'secure_password',
-                            :cdp_server_package_version => '1.0.0'} }
+                            :package_version => '1.0.0'} }
             it { should contain_package('serverbackup-enterprise').with_ensure('1.0.0') }
           end
           describe 'r1soft::server::install allow custom name' do
             let(:params) { {:admin_pass => 'secure_password',
-                            :cdp_server_package_name => 'r1soft-server' } }
+                            :package_name => 'r1soft-server' } }
             it { should contain_package('r1soft-server') }
           end
           describe 'r1soft::server::service with custom service name' do

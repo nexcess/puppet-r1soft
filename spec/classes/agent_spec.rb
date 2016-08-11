@@ -35,11 +35,11 @@ describe 'r1soft::agent' do
         end
         context 'custom parameters' do
           describe 'r1soft::agent::install allow custom ensure/version' do
-            let(:params) { {:cdp_agent_package_version => '1.0.0' } }
+            let(:params) { {:package_version => '1.0.0' } }
             it { should contain_package('serverbackup-agent').with_ensure('1.0.0') }
           end
           describe 'r1soft::agent::install allow custom name' do
-            let(:params) { {:cdp_agent_package_name => 'r1soft-agent' } }
+            let(:params) { {:package_name => 'r1soft-agent' } }
             it { should contain_package('r1soft-agent') }
           end
 

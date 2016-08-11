@@ -5,8 +5,8 @@ class r1soft::params {
 
   # r1soft doesn't sign their packages
   $repo_gpgcheck              = false
-  $cdp_agent_package_version  = 'present'
-  $cdp_agent_package_name     = 'serverbackup-agent'
+  $agent_package_version      = 'present'
+  $agent_package_name         = 'serverbackup-agent'
   $kernel_devel_install       = true
 
   # RHEL 5 has two special kernel packages, 'xen' which is only for x86_64 and
@@ -34,8 +34,8 @@ class r1soft::params {
   $keys                       = {}
   $keys_purge_unmanaged       = false
 
-  $cdp_server_package_version = 'present'
-  $cdp_server_package_name    = 'serverbackup-enterprise'
+  $server_package_version     = 'present'
+  $server_package_name        = 'serverbackup-enterprise'
   $server_service_manage      = true
   $server_service_name        = 'cdp-server'
   $server_service_ensure      = 'running'

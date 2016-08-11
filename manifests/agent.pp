@@ -1,7 +1,7 @@
 class r1soft::agent (
   $repo_install               = $r1soft::params::repo_install,
-  $cdp_agent_package_version  = $r1soft::params::cdp_agent_package_version,
-  $cdp_agent_package_name     = $r1soft::params::cdp_agent_package_name,
+  $package_version            = $r1soft::params::agent_package_version,
+  $package_name               = $r1soft::params::agent_package_name,
   $kernel_devel_install       = $r1soft::params::kernel_devel_install,
   $kernel_devel_package_names = $r1soft::params::kernel_devel_package_names,
   $service_manage             = $r1soft::params::agent_service_manage,
@@ -14,8 +14,8 @@ class r1soft::agent (
 )
 inherits r1soft::params {
   validate_bool($repo_install)
-  validate_string($cdp_agent_package_version)
-  validate_string($cdp_agent_package_name)
+  validate_string($package_version)
+  validate_string($package_name)
   validate_bool($kernel_devel_install)
   validate_string($kernel_devel_package_names)
   validate_bool($service_manage)
@@ -28,7 +28,7 @@ inherits r1soft::params {
 
   if $repo_install {
     include r1soft::repo
-    Yumrepo['r1soft'] -> Package <| title == $cdp_agent_package_name |>
+    Yumrepo['r1soft'] -> Package <| title == $package_name |>
   }
 
   anchor {'r1soft::agent::begin':} ->
