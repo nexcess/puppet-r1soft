@@ -210,7 +210,7 @@ bundle exec rake spec
 
 Run acceptance tests:
 ```
-BEAKER_setfile=spec/acceptance/nodesets/centos-67-x64.yml bundle exec rake acceptance
+BEAKER_set=centos-7-x64 bundle exec rake acceptance
 ```
 
 ## Copyright
