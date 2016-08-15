@@ -3,8 +3,13 @@ require 'spec_helper_acceptance'
 describe 'Applying the r1soft::agent class' do
   describe 'running r1soft::agent with two keys ensured present' do
     it 'should work with no errors' do
+    # we run tests on docker. the docker image will have whatever kernel version
+    # the host is running. therefore our kernel-devel package will fail and the
+    # hcpdriver module won't be built but we can still test for some simple
+    # stuff
       pp = <<-EOS
          class {'::r1soft::agent':
+           kernel_devel_install => false,
            keys => {'198.51.100.2' => {ensure => 'present', key => 'foo',},
                     '198.51.100.3' => {ensure => 'present', key => 'bar',}}
          }
@@ -19,8 +24,9 @@ describe 'Applying the r1soft::agent class' do
       it { should be_installed }
     end
 
-    describe kernel_module('hcpdriver') do
-      it { should be_loaded }
+    describe service('cdp-agent') do
+      it { should be_enabled }
+      it { should be_running }
     end
 
     describe file('/usr/sbin/r1soft/conf/server.allow/198.51.100.2') do
@@ -36,6 +42,7 @@ describe 'Applying the r1soft::agent class' do
     it 'should work with no errors' do
       pp = <<-EOS
          class {'::r1soft::agent':
+           kernel_devel_install => false,
            keys => {'198.51.100.2' => {ensure => 'present', key => 'foo',},
                     '198.51.100.3' => {ensure => 'absent'}}
          }
@@ -70,6 +77,7 @@ describe 'Applying the r1soft::agent class' do
 
       pp = <<-EOS
          class {'::r1soft::agent':
+           kernel_devel_install => false,
            keys => {'198.51.100.2' => {ensure => 'present', key => 'foo',}},
            keys_purge_unmanaged => true,
          }

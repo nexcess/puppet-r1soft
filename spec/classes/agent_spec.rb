@@ -15,13 +15,6 @@ describe 'r1soft::agent' do
           it { should contain_class('r1soft::agent::service') }
           it { should contain_class('r1soft::agent::keys') }
 
-          describe 'r1soft::repo' do
-            it { should contain_yumrepo('r1soft').with_enabled('1') }
-            it { should contain_yumrepo('r1soft').with_baseurl('http://repo.r1soft.com/yum/stable/$basearch/') }
-            it { should contain_yumrepo('r1soft').with_gpgcheck('0') }
-            it { should contain_yumrepo('r1soft').with_descr('r1soft') }
-          end
-
           describe 'r1soft::agent::install' do
             it { should contain_package('serverbackup-agent').with_ensure('present') }
           end
@@ -41,26 +34,12 @@ describe 'r1soft::agent' do
 
         end
         context 'custom parameters' do
-
-          describe 'r1soft::repo allow custom basurl' do
-            let(:params) { {:repo_baseurl => 'http://example.com/yum/' } }
-            it { should contain_yumrepo('r1soft').with_baseurl('http://example.com/yum/') }
-          end
-          describe 'r1soft::repo allow custom enabled' do
-            let(:params) { {:repo_enabled => false } }
-            it { should contain_yumrepo('r1soft').with_enabled('0') }
-          end
-          describe 'r1soft::repo allow custom gpgcheck' do
-            let(:params) { {:repo_gpgcheck => true } }
-            it { should contain_yumrepo('r1soft').with_gpgcheck('1') }
-          end
-
           describe 'r1soft::agent::install allow custom ensure/version' do
-            let(:params) { {:cdp_agent_package_version => '1.0.0' } }
+            let(:params) { {:package_version => '1.0.0' } }
             it { should contain_package('serverbackup-agent').with_ensure('1.0.0') }
           end
           describe 'r1soft::agent::install allow custom name' do
-            let(:params) { {:cdp_agent_package_name => 'r1soft-agent' } }
+            let(:params) { {:package_name => 'r1soft-agent' } }
             it { should contain_package('r1soft-agent') }
           end
 

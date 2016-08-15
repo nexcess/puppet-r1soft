@@ -1,6 +1,6 @@
 HOSTS:
   centos-5-x64:
-    platform: el-5-x86_64
+    platform: centos-5-x86_64
     box: bento/centos-5.11
     box_url: https://vagrantcloud.com/bento/boxes/centos-5.11
     hypervisor: vagrant

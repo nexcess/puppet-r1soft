@@ -1,10 +1,17 @@
-class r1soft::repo {
-  if $r1soft::agent::repo_install {
-    yumrepo { 'r1soft':
-      descr    => 'r1soft',
-      enabled  => bool2num($r1soft::agent::repo_enabled),
-      gpgcheck => bool2num($r1soft::agent::repo_gpgcheck),
-      baseurl  => $r1soft::agent::repo_baseurl,
-    }
+class r1soft::repo (
+  $baseurl  = $r1soft::params::repo_baseurl,
+  $enabled  = $r1soft::params::repo_enabled,
+  $gpgcheck = $r1soft::params::repo_gpgcheck,
+)
+inherits r1soft::params {
+  validate_string($baseurl)
+  validate_bool($enabled)
+  validate_bool($gpgcheck)
+
+  yumrepo { 'r1soft':
+    descr    => 'r1soft',
+    enabled  => bool2num($enabled),
+    gpgcheck => bool2num($gpgcheck),
+    baseurl  => $baseurl,
   }
 }
