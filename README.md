@@ -15,13 +15,20 @@
 
 ## Overview
 
-This module installs and configures the r1soft server backup agent.
+This module installs and configures the r1soft backup agent and the r1soft
+backup server.
 
 ## Module Description
 
-This module installs the r1soft server backup agent. It will install the r1soft
-yum repository, the kernel-devel pacakge, the cdp kernel module, install keys
-for r1soft backup servers, and start the r1soft agent.
+This module installs and configures the r1soft backup agent and the r1soft
+backup server.
+
+For the agent, it will install the r1soft yum repository, the kernel-devel
+pacakge, the cdp kernel module, install keys for r1soft backup servers, and
+start the r1soft agent.
+
+For the server, it will install the r1soft yum repository, manage the admin +
+password, manage the http and https port, and manage the max-memory setting.
 
 ## Usage
 
@@ -176,9 +183,9 @@ it.
 
 ### Facts
 
-* r1soft_agent_version: r1soft version and build number
-* r1soft_agent_version_short: r1soft version number
-* r1soft_agent_version_long: r1soft version number, build number, and build date
+* `r1soft_agent_version`: r1soft version and build number. eg `5.12.0-21`
+* `r1soft_agent_version_short`: r1soft version number. eg `5.12.0`
+* `r1soft_agent_version_long`: r1soft version number, build number, and build date. eg `5.12.0 build 21 2015/08/26 20:31:22`
 
 ## Limitations
 
