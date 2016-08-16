@@ -1,6 +1,6 @@
 {
   "name": "nexcess-r1soft",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "nexcess",
   "summary": "Install and configure r1soft server and/or agent",
   "license": "Apache-2.0",
