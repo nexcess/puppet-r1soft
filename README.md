@@ -187,12 +187,6 @@ it.
 * `r1soft_agent_version_short`: r1soft version number. eg `5.12.0`
 * `r1soft_agent_version_long`: r1soft version number, build number, and build date. eg `5.12.0 build 21 2015/08/26 20:31:22`
 
-## Limitations
-
-The module works with currently supported versions of CentOS and RHEL, It has
-been tested on CentOS. It can probably work on Oracle Linux and Scientific Linux
-with minimal work.
-
 ## Development
 
 Install necessary gems:
