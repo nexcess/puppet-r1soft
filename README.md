@@ -1,6 +1,6 @@
 # r1soft
 
-[![Travis](https://img.shields.io/travis/nexcess/puppet-r1soft.svg)](https://travis-ci.org/nexcess/puppet-r1soft)
+[![Build Status](https://travis-ci.org/nexcess/puppet-r1soft.svg?branch=master)](https://travis-ci.org/nexcess/puppet-r1soft)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/nexcess/r1soft.svg)](https://forge.puppetlabs.com/nexcess/r1soft)
 
 #### Table of Contents
