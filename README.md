@@ -169,7 +169,7 @@ their certificate. CentOS has the root certificate but not the intermediate
 certificate. It is
 [web server's responsibility to send intermediate certificates](https://wiki.mozilla.org/CA:FAQ#Why_does_SSL_handshake_fail_due_to_missing_intermediate_certificate.3F). Without
 the intermediate certificate, the TLS connection and yum fail. See
-[ssllabs's test](https://www.ssllabs.com/ssltest/analyze.html?d=repo.r1soft.com
+[ssllabs's test](https://www.ssllabs.com/ssltest/analyze.html?d=repo.r1soft.com)
 for more info.
 
 #### `repo_enabled`
