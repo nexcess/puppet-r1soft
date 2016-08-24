@@ -1,16 +1,12 @@
 source 'https://rubygems.org'
 
 group :tests do
-  gem 'puppetlabs_spec_helper'
+  gem 'puppetlabs_spec_helper', '~>1.1.0'
   gem 'puppet-lint', '~>2.0'
   gem 'puppet-lint-unquoted_string-check'
   gem 'puppet-lint-empty_string-check'
   gem 'puppet-lint-leading_zero-check'
-  # use until is merged
-  # https://github.com/fiddyspence/puppetlint-variablecase/pull/6
-  gem 'puppet-lint-variable_contains_upcase',
-      :git => 'https://github.com/mmckinst/puppetlint-variablecase.git',
-      :ref => '07f06a63197e6fb7cbd8128e6685673f74fa7e50'
+  gem 'puppet-lint-variable_contains_upcase'
   gem 'puppet-lint-version_comparison-check'
   gem 'rspec'
   gem 'rspec-puppet'
