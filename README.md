@@ -119,6 +119,12 @@ Specify a list of keys to place on the r1soft agent server. Default value: empty
 #### `keys_purge_unmanaged`
 Specify if you want to purge all keys not managed by puppet: Default value: false
 
+#### `kmod_tool`
+Specify the path to the hcp kmod build/retrieval tool: Default value: `/usr/sbin/hcp-setup`
+
+#### `kmod_manage`
+Specify if you want puppet to trigger kmod builds (and service restarts): Default value: false
+
 
 ### r1soft::server parameters
 
