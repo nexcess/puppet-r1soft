@@ -33,6 +33,9 @@ class r1soft::params {
   $keys                       = {}
   $keys_purge_unmanaged       = false
 
+  $agent_kmod_tool            = '/usr/sbin/hcp-setup'
+  $agent_kmod_manage          = false
+
   $server_package_version     = 'present'
   $server_package_name        = 'serverbackup-enterprise'
   $server_service_manage      = true
