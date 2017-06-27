@@ -1,3 +1,6 @@
+## 2.1.0 - 2017-06-27
+- add management of the hcpdriver kmod
+
 ## 2.0.0 - 2016-08-20
 - the managemnt of the r1sfot repo repo is a separate class now. it can still be
   installed through the agent.
