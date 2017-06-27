@@ -37,7 +37,8 @@ inherits r1soft::params {
   class{'::r1soft::agent::kernel_package':} ->
   class{'::r1soft::agent::install':} ->
   class{'::r1soft::agent::service':} ->
-  class{'::r1soft::agent::hcpdriver':} ->
   class{'::r1soft::agent::keys':} ->
   anchor {'r1soft::agent::end':}
+
+  class{'::r1soft::agent::hcpdriver':}
 }
