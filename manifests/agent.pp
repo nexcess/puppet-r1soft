@@ -33,12 +33,12 @@ inherits r1soft::params {
     Yumrepo['r1soft'] -> Package <| title == $package_name |>
   }
 
-  anchor {'r1soft::agent::begin':} ->
-  class{'::r1soft::agent::kernel_package':} ->
-  class{'::r1soft::agent::install':} ->
-  class{'::r1soft::agent::service':} ->
-  class{'::r1soft::agent::keys':} ->
-  anchor {'r1soft::agent::end':}
+  anchor {'r1soft::agent::begin':}
+  -> class{'::r1soft::agent::kernel_package':}
+  -> class{'::r1soft::agent::install':}
+  -> class{'::r1soft::agent::service':}
+  -> class{'::r1soft::agent::keys':}
+  -> anchor {'r1soft::agent::end':}
 
   class{'::r1soft::agent::hcpdriver':}
 }
