@@ -120,7 +120,7 @@ Specify a list of keys to place on the r1soft agent server. Default value: empty
 Specify if you want to purge all keys not managed by puppet: Default value: false
 
 #### `kmod_tool`
-Specify the path to the hcp kmod build/retrieval tool: Default value: `/usr/sbin/hcp-setup`
+Specify the path to the hcp kmod build/retrieval tool: Default value: `/usr/bin/r1soft-setup`
 
 #### `kmod_manage`
 Specify if you want puppet to trigger kmod builds (and service restarts): Default value: false
@@ -192,6 +192,8 @@ it.
 * `r1soft_agent_version`: r1soft version and build number. eg `5.12.0-21`
 * `r1soft_agent_version_short`: r1soft version number. eg `5.12.0`
 * `r1soft_agent_version_long`: r1soft version number, build number, and build date. eg `5.12.0 build 21 2015/08/26 20:31:22`
+* `hcpdriver_installed`: whether the hcp driver executable is available `true/false`
+* `hcpdriver`: a hash of info about the hcpdriver kmod
 
 ## Development
 
