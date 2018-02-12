@@ -2,7 +2,7 @@ Facter.add(:hcpdriver_installed) do
     confine :kernel => 'Linux'
 
     setcode do
-        File.exist? '/usr/sbin/hcp-setup'
+        File.executable? '/usr/sbin/hcp'
     end
 end
 

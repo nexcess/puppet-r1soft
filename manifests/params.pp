@@ -33,7 +33,7 @@ class r1soft::params {
   $keys                       = {}
   $keys_purge_unmanaged       = false
 
-  $agent_kmod_tool            = '/usr/sbin/hcp-setup'
+  $agent_kmod_tool            = '/usr/bin/r1soft-setup'
   $agent_kmod_manage          = false
 
   $server_package_version     = 'present'
