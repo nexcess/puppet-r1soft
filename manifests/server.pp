@@ -32,9 +32,9 @@ inherits r1soft::params {
   }
 
 
-  anchor {'r1soft::server::begin':} ->
-  class{'::r1soft::server::install':} ->
-  class{'::r1soft::server::config':} ->
-  class{'::r1soft::server::service':} ->
-  anchor {'r1soft::server::end':}
+  anchor {'r1soft::server::begin':}
+  -> class{'::r1soft::server::install':}
+  -> class{'::r1soft::server::config':}
+  -> class{'::r1soft::server::service':}
+  -> anchor {'r1soft::server::end':}
 }

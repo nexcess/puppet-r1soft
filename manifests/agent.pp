@@ -10,6 +10,8 @@ class r1soft::agent (
   $service_enable             = $r1soft::params::agent_service_enable,
   $keys                       = $r1soft::params::keys,
   $keys_purge_unmanaged       = $r1soft::params::keys_purge_unmanaged,
+  $kmod_tool                  = $r1soft::params::agent_kmod_tool,
+  $kmod_manage                = $r1soft::params::agent_kmod_manage,
 )
 inherits r1soft::params {
   validate_bool($repo_install)
@@ -23,16 +25,20 @@ inherits r1soft::params {
   validate_bool($service_enable)
   validate_hash($keys)
   validate_bool($keys_purge_unmanaged)
+  validate_string($kmod_tool)
+  validate_bool($kmod_manage)
 
   if $repo_install {
     include r1soft::repo
     Yumrepo['r1soft'] -> Package <| title == $package_name |>
   }
 
-  anchor {'r1soft::agent::begin':} ->
-  class{'::r1soft::agent::kernel_package':} ->
-  class{'::r1soft::agent::install':} ->
-  class{'::r1soft::agent::service':} ->
-  class{'::r1soft::agent::keys':} ->
-  anchor {'r1soft::agent::end':}
+  anchor {'r1soft::agent::begin':}
+  -> class{'::r1soft::agent::kernel_package':}
+  -> class{'::r1soft::agent::install':}
+  -> class{'::r1soft::agent::service':}
+  -> class{'::r1soft::agent::keys':}
+  -> anchor {'r1soft::agent::end':}
+
+  class{'::r1soft::agent::hcpdriver':}
 }
