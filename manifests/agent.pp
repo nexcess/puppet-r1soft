@@ -1,32 +1,20 @@
 class r1soft::agent (
-  $repo_install               = $r1soft::params::repo_install,
-  $package_version            = $r1soft::params::agent_package_version,
-  $package_name               = $r1soft::params::agent_package_name,
-  $kernel_devel_install       = $r1soft::params::kernel_devel_install,
-  $kernel_devel_package_names = $r1soft::params::kernel_devel_package_names,
-  $service_manage             = $r1soft::params::agent_service_manage,
-  $service_name               = $r1soft::params::agent_service_name,
-  $service_ensure             = $r1soft::params::agent_service_ensure,
-  $service_enable             = $r1soft::params::agent_service_enable,
-  $keys                       = $r1soft::params::keys,
-  $keys_purge_unmanaged       = $r1soft::params::keys_purge_unmanaged,
-  $kmod_tool                  = $r1soft::params::agent_kmod_tool,
-  $kmod_manage                = $r1soft::params::agent_kmod_manage,
+  Boolean $repo_install              = $r1soft::params::repo_install,
+  String $package_version            = $r1soft::params::agent_package_version,
+  String $package_name               = $r1soft::params::agent_package_name,
+  Boolean $kernel_devel_install      = $r1soft::params::kernel_devel_install,
+  String $kernel_devel_package_names = $r1soft::params::kernel_devel_package_names,
+  Boolean $service_manage            = $r1soft::params::agent_service_manage,
+  String $service_name               = $r1soft::params::agent_service_name,
+  String $service_ensure             = $r1soft::params::agent_service_ensure,
+  Boolean $service_enable            = $r1soft::params::agent_service_enable,
+  Hash $keys                         = $r1soft::params::keys,
+  Boolean $keys_purge_unmanaged      = $r1soft::params::keys_purge_unmanaged,
+  String $kmod_tool                  = $r1soft::params::agent_kmod_tool,
+  Boolean $kmod_manage               = $r1soft::params::agent_kmod_manage,
+  Integer $delay_factor              = $r1soft::params::agent_delay_module_build_factor
 )
 inherits r1soft::params {
-  validate_bool($repo_install)
-  validate_string($package_version)
-  validate_string($package_name)
-  validate_bool($kernel_devel_install)
-  validate_string($kernel_devel_package_names)
-  validate_bool($service_manage)
-  validate_string($service_name)
-  validate_string($service_ensure)
-  validate_bool($service_enable)
-  validate_hash($keys)
-  validate_bool($keys_purge_unmanaged)
-  validate_string($kmod_tool)
-  validate_bool($kmod_manage)
 
   if $repo_install {
     include r1soft::repo

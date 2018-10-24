@@ -26,25 +26,26 @@ class r1soft::params {
   } else {
     $kernel_devel_package_names = "kernel-devel-${::kernelrelease}"
   }
-  $agent_service_manage       = true
-  $agent_service_name         = 'cdp-agent'
-  $agent_service_ensure       = 'running'
-  $agent_service_enable       = true
-  $keys                       = {}
-  $keys_purge_unmanaged       = false
+  $agent_service_manage            = true
+  $agent_service_name              = 'cdp-agent'
+  $agent_service_ensure            = 'running'
+  $agent_service_enable            = true
+  $agent_delay_module_build_factor = 0
+  $keys                            = {}
+  $keys_purge_unmanaged            = false
 
-  $agent_kmod_tool            = '/usr/bin/r1soft-setup'
-  $agent_kmod_manage          = false
+  $agent_kmod_tool                 = '/usr/bin/r1soft-setup'
+  $agent_kmod_manage               = false
 
-  $server_package_version     = 'present'
-  $server_package_name        = 'serverbackup-enterprise'
-  $server_service_manage      = true
-  $server_service_name        = 'cdp-server'
-  $server_service_ensure      = 'running'
-  $server_service_enable      = true
-  $server_admin_user          = 'admin'
-  $server_admin_pass          = false
-  $server_max_mem             = undef
-  $server_http_port           = 80
-  $server_https_port          = 443
+  $server_package_version          = 'present'
+  $server_package_name             = 'serverbackup-enterprise'
+  $server_service_manage           = true
+  $server_service_name             = 'cdp-server'
+  $server_service_ensure           = 'running'
+  $server_service_enable           = true
+  $server_admin_user               = 'admin'
+  $server_admin_pass               = false
+  $server_max_mem                  = undef
+  $server_http_port                = 80
+  $server_https_port               = 443
 }
