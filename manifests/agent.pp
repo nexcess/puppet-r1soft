@@ -12,6 +12,7 @@ class r1soft::agent (
   Boolean $keys_purge_unmanaged      = $r1soft::params::keys_purge_unmanaged,
   String $kmod_tool                  = $r1soft::params::agent_kmod_tool,
   Boolean $kmod_manage               = $r1soft::params::agent_kmod_manage,
+  Integer $delay_factor              = $r1soft::params::agent_delay_module_build_factor
 )
 inherits r1soft::params {
 
