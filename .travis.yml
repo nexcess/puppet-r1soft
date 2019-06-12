@@ -23,32 +23,10 @@ matrix:
     script: bundle exec rake beaker
     services: docker
     sudo: required
-
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 3.0"   STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 4.0"   STRICT_VARIABLES=yes
-
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 3.5.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 3.6.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 3.7.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 3.8.0" STRICT_VARIABLES=yes
   - rvm: 2.1
     env: PUPPET_GEM_VERSION="~> 4.0.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 4.1.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 4.2.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 4.3.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 4.4.0" STRICT_VARIABLES=yes
-  - rvm: 2.1
-    env: PUPPET_GEM_VERSION="~> 4.5.0" STRICT_VARIABLES=yes
+  - rvm: 2.4
+    env: PUPPET_GEM_VERSION="~> 5.0.0" STRICT_VARIABLES=yes
 script: "bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation'"
 notifications:
   email: false
