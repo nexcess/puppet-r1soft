@@ -126,7 +126,7 @@ Specify the path to the hcp kmod build/retrieval tool: Default value: `/usr/bin/
 Specify if you want puppet to trigger kmod builds (and service restarts): Default value: false
 
 #### `delay_factor`
-Uptime (in seconds) a node should report before compiling the kernel module: Default value: 0
+Uptime (in seconds) a node should report before compiling the kernel module or starting the r1soft agent: Default value: 0
 
 ### r1soft::server parameters
 
