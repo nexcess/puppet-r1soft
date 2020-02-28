@@ -7,7 +7,7 @@ class r1soft::agent::hcpdriver {
       if $facts['hcpdriver_installed'] {
         exec {'update hcpdriver kmod':
           command => "${r1soft::agent::kmod_tool} --get-module --silent",
-          creates => $facts['hcpdriver']['kmod_wanted'],
+          creates => $facts['hcpdriver']['kmod_wanted']
         }
 
         ## If the module isn't built, don't even continue
@@ -18,7 +18,7 @@ class r1soft::agent::hcpdriver {
           ) {
             exec {'trigger cdp-agent restart':
               command => '/bin/true',
-              notify  => Service[$r1soft::agent::service_name],
+              notify  => Service[$r1soft::agent::service_name]
             }
           }
         }
