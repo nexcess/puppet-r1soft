@@ -10,14 +10,16 @@ class r1soft::agent::hcpdriver {
           notify  => Service[$r1soft::agent::service_name],
         }
 
-        unless (
-          $facts['hcpdriver']['is_loaded'] and
-          $facts['hcpdriver']['kmod_wanted'] == $facts['hcpdriver']['kmod_selected'] and
-          $facts['hcpdriver']['kmod_wanted_is_built']
-        ) {
-          exec {'trigger cdp-agent restart':
-            command => '/bin/true',
-            notify  => Service[$r1soft::agent::service_name],
+        ## If the module isn't built, don't even continue
+        if ( $facts['hcpdriver']['kmod_wanted_is_built'] ){
+          unless (
+            $facts['hcpdriver']['is_loaded'] and
+            $facts['hcpdriver']['kmod_wanted'] == $facts['hcpdriver']['kmod_selected']
+          ) {
+            exec {'trigger cdp-agent restart':
+              command => '/bin/true',
+              notify  => Service[$r1soft::agent::service_name],
+            }
           }
         }
       }
