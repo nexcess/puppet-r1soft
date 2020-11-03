@@ -25,8 +25,8 @@ describe 'r1soft::server' do
           end
 
           describe 'r1soft::service::service' do
-            it { should contain_service('cdp-server').with_ensure('running') }
-            it { should contain_service('cdp-server').with_enable('true') }
+            it { should contain_service('sbm-server').with_ensure('running') }
+            it { should contain_service('sbm-server').with_enable('true') }
           end
 
           describe 'r1soft::service::config' do
@@ -55,7 +55,7 @@ describe 'r1soft::server' do
           describe 'r1soft::server::service with custom ensure' do
             let(:params) { {:admin_pass => 'secure_password',
                             :service_ensure => 'stopped'} }
-            it { should contain_service('cdp-server').with_ensure('stopped') }
+            it { should contain_service('sbm-server').with_ensure('stopped') }
           end
           describe 'r1soft::server::config with custom max_mem' do
             let(:params) { {:admin_pass => 'secure_password',

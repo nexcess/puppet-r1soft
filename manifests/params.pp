@@ -27,20 +27,20 @@ class r1soft::params {
     $kernel_devel_package_names = "kernel-devel-${::kernelrelease}"
   }
   $agent_service_manage            = true
-  $agent_service_name              = 'cdp-agent'
+  $agent_service_name              = 'sbm-agent'
   $agent_service_ensure            = 'running'
   $agent_service_enable            = true
   $agent_delay_module_build_factor = 0
   $keys                            = {}
   $keys_purge_unmanaged            = false
 
-  $agent_kmod_tool                 = '/usr/bin/r1soft-setup'
-  $agent_kmod_manage               = false
+  $agent_kmod_tool                 = '/usr/bin/serverbackup-setup'
+  $agent_kmod_manage               = true
 
   $server_package_version          = 'present'
   $server_package_name             = 'serverbackup-enterprise'
   $server_service_manage           = true
-  $server_service_name             = 'cdp-server'
+  $server_service_name             = 'sbm-server'
   $server_service_ensure           = 'running'
   $server_service_enable           = true
   $server_admin_user               = 'admin'

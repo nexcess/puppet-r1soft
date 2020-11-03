@@ -16,7 +16,7 @@ class r1soft::agent::hcpdriver {
             $facts['hcpdriver']['is_loaded'] and
             $facts['hcpdriver']['kmod_wanted'] == $facts['hcpdriver']['kmod_selected']
           ) {
-            exec {'trigger cdp-agent restart':
+            exec {'trigger sbm-agent restart':
               command => '/bin/true',
               notify  => Service[$r1soft::agent::service_name]
             }
