@@ -1,3 +1,9 @@
+## 2.2.0 [PR Pending] - 2020-11-03
+- Replaced all occurances of "cdp" with "sbm"
+- Fixed some incorrect references on readme.md
+- `kmod_manage` now defaults to `true`
+- Fixed tests
+
 ## 2.1.0 - 2017-06-27
 - add management of the hcpdriver kmod
 

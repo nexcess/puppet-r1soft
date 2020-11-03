@@ -17,7 +17,7 @@ describe 'Applying the r1soft::server class' do
     describe package('serverbackup-enterprise') do
       it { should be_installed }
     end
-    describe service('cdp-server') do
+    describe service('sbm-server') do
       it { should be_enabled }
       it { should be_running }
     end

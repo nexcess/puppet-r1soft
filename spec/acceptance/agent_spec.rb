@@ -24,7 +24,7 @@ describe 'Applying the r1soft::agent class' do
       it { should be_installed }
     end
 
-    describe service('cdp-agent') do
+    describe service('sbm-agent') do
       it { should be_enabled }
       it { should be_running }
     end

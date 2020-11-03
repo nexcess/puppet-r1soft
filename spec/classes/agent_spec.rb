@@ -24,8 +24,8 @@ describe 'r1soft::agent' do
           end
 
           describe 'r1soft::agent::service' do
-            it { should contain_service('cdp-agent').with_ensure('running') }
-            it { should contain_service('cdp-agent').with_enable('true') }
+            it { should contain_service('sbm-agent').with_ensure('running') }
+            it { should contain_service('sbm-agent').with_enable('true') }
           end
 
           describe 'r1soft::agent::keys' do
@@ -54,11 +54,11 @@ describe 'r1soft::agent' do
           end
           describe 'r1soft::agent::service with custom ensure' do
             let(:params) { {:service_ensure => 'stopped' } }
-            it { should contain_service('cdp-agent').with_ensure('stopped') }
+            it { should contain_service('sbm-agent').with_ensure('stopped') }
           end
           describe 'r1soft::agent::service with custom ensure' do
             let(:params) { {:service_enable => false } }
-            it { should contain_service('cdp-agent').with_enable(false) }
+            it { should contain_service('sbm-agent').with_enable(false) }
           end
 
           describe 'r1soft::agent with repo_install = false' do
@@ -71,7 +71,7 @@ describe 'r1soft::agent' do
           end
           describe 'r1soft::agent with service_manage = false' do
             let(:params) { {:service_manage => false } }
-            it { should_not contain_service('cdp-agent') }
+            it { should_not contain_service('sbm-agent') }
           end
           describe 'r1soft::agent with keys_purge_unmanaged = true' do
             let(:params) { {:keys_purge_unmanaged => true } }

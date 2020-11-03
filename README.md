@@ -105,7 +105,7 @@ Specify the kernel-devel package name. Default value: kernel-devel-${::kernelrel
 Specify if you want to the module to manage the r1soft agent service. Default value: true
 
 #### `service_name`
-Specify the name of the r1soft agent service. Default value: 'cdp-agent'
+Specify the name of the r1soft agent service. Default value: 'sbm-agent'
 
 #### `service_ensure`
 Specify the ensure value of the r1soft agent service. Default value: 'running'
@@ -120,10 +120,10 @@ Specify a list of keys to place on the r1soft agent server. Default value: empty
 Specify if you want to purge all keys not managed by puppet: Default value: false
 
 #### `kmod_tool`
-Specify the path to the hcp kmod build/retrieval tool: Default value: `/usr/bin/r1soft-setup`
+Specify the path to the hcp kmod build/retrieval tool: Default value: `/usr/bin/serverbackup-setup`
 
 #### `kmod_manage`
-Specify if you want puppet to trigger kmod builds (and service restarts): Default value: false
+Specify if you want puppet to trigger kmod builds (and service restarts): Default value: true
 
 #### `delay_factor`
 Uptime (in seconds) a node should report before compiling the kernel module or starting the r1soft agent: Default value: 0
@@ -137,13 +137,13 @@ Specify if you want the module to install the r1soft repository. Default value: 
 Specify the version of r1soft server to install. Default value: 'present'
 
 #### `package_name`
-Specify the name of the r1soft server package. Default value: 'serverbackup-agent'
+Specify the name of the r1soft server package. Default value: 'serverbackup-enterprise'
 
 #### `service_manage`
 Specify if you want to the module to manage the r1soft server service. Default value: true
 
 #### `service_name`
-Specify the name of the r1soft server service. Default value: 'cdp-agent'
+Specify the name of the r1soft server service. Default value: 'sbm-agent'
 
 #### `service_ensure`
 Specify the ensure value of the r1soft server service. Default value: 'running'
